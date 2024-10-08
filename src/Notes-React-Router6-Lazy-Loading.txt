@@ -1,0 +1,43 @@
+Source: https://www.robinwieruch.de/react-router-lazy-loading/
+
+- npm install react-router-dom@6
+
+1. Introduction: 
+     Lazy Loading on route level with React Router is a powerful feature. 
+   Usually a client-side rendered React applications comes as one bundle 
+   from a web server. However, when enabling lazy loading, the bundle is 
+   split into smaller bundles. When a user visits a specific part of the 
+   application, only this part lazy loads on demand. 
+   
+     The term for this optimization is called Code Splitting and improves 
+   the performance when a user navigates through a larger React application.
+
+2. Install Bootstrap 
+    npm install bootstrap
+    If created by create-vite
+      Once the installation is complete, we can include it in our app’s 
+       entry file in main.jsx :
+       --  Bootstrap CSS
+       import "bootstrap/dist/css/bootstrap.min.css";
+       -- Bootstrap Bundle JS
+      import "bootstrap/dist/js/bootstrap.bundle.min";
+
+    If React Project is created by create-react-app 
+      include it in our app’s entry file in index.js :
+
+3. Implementing Lazy Loading on route level
+
+   - Lazy loading a component in React is not difficult, because React offers 
+   a top-level API for it called React.lazy. Because we already import both 
+   page components from another file, we can just use React's lazy() method 
+   as wrapper here:
+         mport * as React from 'react';
+        import { Routes, Route, Link } from 'react-router-dom';
+
+        const Home = React.lazy(() => import('./pages/Home'));
+        const About = React.lazy(() => import('./pages/About'));
+
+    - Using React.Suspense is cumbersome. Use popular lazy loading library 
+    for React called @loadable/component.
+       npm install  @loadable/component.
+       
